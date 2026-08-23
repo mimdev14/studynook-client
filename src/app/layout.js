@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "StudyNook | Library Study Room Booking",
   description:
-    "StudyNook helps students find, book, and manage library study rooms easily.",
+    "Find and book comfortable study rooms for focused learning.",
 };
 
 export default function RootLayout({ children }) {
@@ -24,7 +25,9 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <body className="min-h-screen flex flex-col antialiased">
-        {children}
+        <Navbar />
+
+        <main className="flex-1">{children}</main>
       </body>
     </html>
   );
