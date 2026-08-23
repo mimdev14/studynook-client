@@ -35,7 +35,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           {/* Login */}
           <Link
-            href="/login"
+            href="/auth/login"
             className="rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-black hover:shadow-md"
           >
             Login
@@ -43,7 +43,7 @@ export default function Navbar() {
 
           {/* Register */}
           <Link
-            href="/register"
+            href="/auth/register"
             className="rounded-lg border border-black bg-black px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-900 hover:shadow-md"
           >
             Register
