@@ -2,47 +2,72 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { signIn } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { signIn, signUp } from "@/lib/auth-client";
 
-export default function LoginPage() {
+function getPasswordIssues(password) {
+  const issues = [];
+  if (password.length < 6) issues.push("at least 6 characters");
+  if (!/[A-Z]/.test(password)) issues.push("one uppercase letter");
+  if (!/[a-z]/.test(password)) issues.push("one lowercase letter");
+  return issues;
+}
+
+export default function RegisterPage() {
+  const router = useRouter();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Email + Password Login
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
+    const name = formData.get("name");
     const email = formData.get("email");
+    const photoURL = formData.get("photoURL");
     const password = formData.get("password");
 
     setError("");
+
+    if (!name) {
+      setError("Please enter your name.");
+      return;
+    }
 
     if (!email) {
       setError("Please enter your email address.");
       return;
     }
 
-    if (!password) {
-      setError("Please enter your password.");
+    if (!photoURL) {
+      setError("Please enter a photo URL.");
+      return;
+    }
+
+    const passwordIssues = getPasswordIssues(password || "");
+    if (passwordIssues.length > 0) {
+      setError(`Password needs ${passwordIssues.join(", ")}.`);
       return;
     }
 
     try {
       setIsLoading(true);
 
-      const { error } = await signIn.email({
+      const { error } = await signUp.email({
+        name,
         email,
         password,
+        image: photoURL,
       });
 
       if (error) {
-        setError("Invalid email or password.");
+        setError(error.message || "Registration failed. Please try again.");
         return;
       }
 
-      // Successful login
-      window.location.href = "/";
+      toast.success("Registration successful! Please login.");
+      router.push("/auth/login");
     } catch (error) {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -50,19 +75,13 @@ export default function LoginPage() {
     }
   };
 
-  // Google Login
-  const handleGoogleLogin = async () => {
+  const handleGoogle = async () => {
     setError("");
-
     try {
       setIsLoading(true);
-
-      await signIn.social({
-        provider: "google",
-        callbackURL: "/",
-      });
+      await signIn.social({ provider: "google", callbackURL: "/" });
     } catch (error) {
-      setError("Unable to continue with Google. Please try again.");
+      setError("Google sign-up failed. Please try again.");
       setIsLoading(false);
     }
   };
@@ -80,17 +99,17 @@ export default function LoginPage() {
           </Link>
 
           <h1 className="mt-8 text-3xl font-bold tracking-tight text-black">
-            Welcome back
+            Create your account
           </h1>
 
           <p className="mt-3 text-sm text-gray-600">
-            Sign in to continue to your StudyNook account.
+            Join StudyNook to browse and book study rooms.
           </p>
         </div>
 
-        {/* Login Card */}
+        {/* Register Card */}
         <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} noValidate className="space-y-5">
             {/* Error Message */}
             {error && (
               <div
@@ -100,6 +119,26 @@ export default function LoginPage() {
                 {error}
               </div>
             )}
+
+            {/* Name */}
+            <div>
+              <label
+                htmlFor="name"
+                className="mb-2 block text-sm font-medium text-black"
+              >
+                Name
+              </label>
+
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Jordan Rivera"
+                autoComplete="name"
+                disabled={isLoading}
+                className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-black outline-none transition-all duration-200 placeholder:text-gray-400 focus:border-black focus:ring-2 focus:ring-black/10 disabled:cursor-not-allowed disabled:bg-gray-100"
+              />
+            </div>
 
             {/* Email */}
             <div>
@@ -121,6 +160,26 @@ export default function LoginPage() {
               />
             </div>
 
+            {/* Photo URL */}
+            <div>
+              <label
+                htmlFor="photoURL"
+                className="mb-2 block text-sm font-medium text-black"
+              >
+                Photo URL
+              </label>
+
+              <input
+                id="photoURL"
+                name="photoURL"
+                type="text"
+                placeholder="https://example.com/photo.jpg"
+                autoComplete="off"
+                disabled={isLoading}
+                className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-black outline-none transition-all duration-200 placeholder:text-gray-400 focus:border-black focus:ring-2 focus:ring-black/10 disabled:cursor-not-allowed disabled:bg-gray-100"
+              />
+            </div>
+
             {/* Password */}
             <div>
               <label
@@ -134,11 +193,14 @@ export default function LoginPage() {
                 id="password"
                 name="password"
                 type="password"
-                placeholder="Enter your password"
-                autoComplete="current-password"
+                placeholder="Create a password"
+                autoComplete="new-password"
                 disabled={isLoading}
                 className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-black outline-none transition-all duration-200 placeholder:text-gray-400 focus:border-black focus:ring-2 focus:ring-black/10 disabled:cursor-not-allowed disabled:bg-gray-100"
               />
+              <p className="mt-2 text-xs text-gray-500">
+                At least 6 characters, with one uppercase and one lowercase letter.
+              </p>
             </div>
 
             {/* Submit Button */}
@@ -147,7 +209,7 @@ export default function LoginPage() {
               disabled={isLoading}
               className="w-full rounded-lg bg-black px-4 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-900 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none"
             >
-              {isLoading ? "Signing in..." : "Sign In"}
+              {isLoading ? "Creating account..." : "Register"}
             </button>
           </form>
 
@@ -163,23 +225,23 @@ export default function LoginPage() {
           {/* Google OAuth */}
           <button
             type="button"
-            onClick={handleGoogleLogin}
+            onClick={handleGoogle}
             disabled={isLoading}
             className="flex w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm font-semibold text-black transition-all duration-200 hover:-translate-y-0.5 hover:border-black hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none"
           >
-            <span className="text-base font-bold">G</span>
-            {isLoading ? "Please wait..." : "Continue with Google"}
+            <span className="text-base">G</span>
+            Continue with Google
           </button>
         </div>
 
-        {/* Register */}
+        {/* Login */}
         <p className="mt-6 text-center text-sm text-gray-600">
-          Do not have an account?{" "}
+          Already have an account?{" "}
           <Link
-            href="/auth/register"
+            href="/auth/login"
             className="font-semibold text-black underline underline-offset-4"
           >
-            Create an account
+            Login
           </Link>
         </p>
       </div>
