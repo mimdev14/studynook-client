@@ -79,7 +79,7 @@ export default function RegisterPage() {
     setError("");
     try {
       setIsLoading(true);
-      await signIn.social({ provider: "google", callbackURL: "/" });
+      await signIn.social({ provider: "google", callbackURL: `${window.location.origin}/` });
     } catch (error) {
       setError("Google sign-up failed. Please try again.");
       setIsLoading(false);
