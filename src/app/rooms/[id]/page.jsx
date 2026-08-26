@@ -8,6 +8,7 @@ import { apiFetch } from "@/lib/api";
 import Spinner from "@/components/Spinner";
 import EditRoomModal from "@/components/EditRoomModal";
 import DeleteConfirmModal from "@/components/DeleteConfirmModal";
+import BookingModal from "@/components/BookingModal";
 
 export default function RoomDetailsPage() {
   const { id } = useParams();
@@ -20,7 +21,7 @@ export default function RoomDetailsPage() {
   const [showEdit, setShowEdit] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [deleting, setDeleting] = useState(false);
-
+const [showBooking, setShowBooking] = useState(false);
   useEffect(() => {
     apiFetch(`/api/rooms/${id}`)
       .then(setRoom)
@@ -90,8 +91,8 @@ export default function RoomDetailsPage() {
             Login to Book
           </a>
         ) : (
-          <button
-            onClick={() => toast.info("Booking form coming next")}
+                            <button
+            onClick={() => setShowBooking(true)}
             className="rounded-lg bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-gray-900"
           >
             Book Now
@@ -110,7 +111,15 @@ export default function RoomDetailsPage() {
             </button>
           </>
         )}
+              {showBooking && (
+        <BookingModal
+          room={room}
+          onClose={() => setShowBooking(false)}
+          onBooked={() => setRoom((r) => ({ ...r, bookingCount: (r.bookingCount || 0) + 1 }))}
+        />
+      )}
       </div>
+
 
       {showEdit && (
         <EditRoomModal room={room} onClose={() => setShowEdit(false)} onUpdated={setRoom} />
