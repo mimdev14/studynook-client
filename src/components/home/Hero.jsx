@@ -90,44 +90,12 @@ export default function Hero() {
           <div className="relative mx-auto h-[500px] max-w-[480px]">
             {/* Main Card */}
             <div className="absolute inset-8 animate-[float_5s_ease-in-out_infinite] rounded-3xl border border-gray-200 bg-gray-50 p-4 shadow-2xl">
-              <div className="relative h-full overflow-hidden rounded-2xl bg-gray-200">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300" />
-
-                <div className="relative flex h-full items-center justify-center">
-                  <div className="text-center">
-                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-md">
-                      <span className="text-2xl">📚</span>
-                    </div>
-
-                    <p className="text-sm font-semibold text-gray-700">
-                      Your next study space
-                    </p>
-
-                    <p className="mt-1 text-xs text-gray-500">
-                      Quiet. Comfortable. Focused.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Room Info */}
-                <div className="absolute bottom-5 left-5 right-5 rounded-xl border border-white/70 bg-white/90 p-4 shadow-lg backdrop-blur-md">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-semibold text-black">
-                        Focus Room
-                      </p>
-
-                      <p className="mt-1 text-xs text-gray-500">
-                        3rd Floor · 4 seats
-                      </p>
-                    </div>
-
-                    <div className="rounded-lg bg-black px-3 py-2 text-xs font-semibold text-white">
-                      $5/hr
-                    </div>
-                  </div>
-                </div>
-              </div>
+                            <div className="relative h-full overflow-hidden rounded-2xl bg-gray-200">
+                <img
+                  src="https://images.unsplash.com/photo-1568667256549-094345857637?w=800&q=80"
+                  alt="Study room"
+                  className="h-full w-full object-cover"
+                />
             </div>
 
             {/* Floating Card - Top */}
