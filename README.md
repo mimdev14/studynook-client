@@ -15,7 +15,7 @@ StudyNook is a full-stack platform where students and library users can list and
 ## Tech Stack
 - **Frontend:** Next.js, React, Tailwind CSS
 - **Auth:** Better Auth (email/password + Google OAuth)
-- **Backend:** Node.js, Express (see [server repo](https://github.com/mimdev14/studynook-server))
+- **Backend:** Node.js, Express (see [server repo](https://github.com/mimdev14/studyNook_server.git))
 - **Database:** MongoDB
 
 ## Getting Started
