@@ -30,7 +30,7 @@ const [showBooking, setShowBooking] = useState(false);
   }, [id]);
 
   useEffect(() => {
-    if (room) document.title = `StudyNook – ${room.name}`;
+    if (room) document.title = `ClassRoom – ${room.name}`;
   }, [room]);
 
   const handleDelete = async () => {

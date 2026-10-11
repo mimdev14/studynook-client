@@ -19,14 +19,14 @@ const benefits = [
   },
 ];
 
-export default function WhyStudyNook() {
+export default function WhyClassRoom() {
   return (
     <section className="bg-white py-20">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500">
-            Why StudyNook
+            Why ClassRoom
           </p>
 
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-black sm:text-4xl">
@@ -35,7 +35,7 @@ export default function WhyStudyNook() {
 
           <p className="mt-4 text-base leading-7 text-gray-600">
             From finding the right room to securing your preferred time,
-            StudyNook keeps the entire process simple.
+            ClassRoom keeps the entire process simple.
           </p>
         </div>
 

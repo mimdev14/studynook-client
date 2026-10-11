@@ -13,7 +13,7 @@ export default function MyListingsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "StudyNook – My Listings";
+    document.title = "ClassRoom – My Listings";
   }, []);
 
   useEffect(() => {

@@ -95,7 +95,7 @@ export default function RegisterPage() {
             href="/"
             className="text-2xl font-bold tracking-tight text-black"
           >
-            StudyNook
+            ClassRoom
           </Link>
 
           <h1 className="mt-8 text-3xl font-bold tracking-tight text-black">
@@ -103,7 +103,7 @@ export default function RegisterPage() {
           </h1>
 
           <p className="mt-3 text-sm text-gray-600">
-            Join StudyNook to browse and book study rooms.
+            Join ClassRoom to browse and book study rooms.
           </p>
         </div>
 

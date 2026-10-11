@@ -33,7 +33,7 @@ export default function Navbar() {
           href="/"
           className="text-2xl font-bold tracking-tight text-black transition-opacity duration-200 hover:opacity-70"
         >
-          StudyNook
+          ClassRoom
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">

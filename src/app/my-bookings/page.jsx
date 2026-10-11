@@ -15,7 +15,7 @@ export default function MyBookingsPage() {
   const [cancelling, setCancelling] = useState(false);
 
   useEffect(() => {
-    document.title = "StudyNook – My Bookings";
+    document.title = "ClassRoom – My Bookings";
   }, []);
 
   const loadBookings = () => {

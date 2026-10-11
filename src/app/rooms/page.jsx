@@ -13,7 +13,7 @@ export default function RoomsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "StudyNook – Available Rooms";
+    document.title = "ClassRoom – Available Rooms";
   }, []);
 
   const toggleAmenity = (a) => {

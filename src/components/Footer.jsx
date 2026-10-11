@@ -11,7 +11,7 @@ export default function Footer() {
               href="/"
               className="text-2xl font-bold tracking-tight text-black"
             >
-              StudyNook
+              ClassRoom
             </Link>
 
             <p className="mt-4 max-w-md text-sm leading-6 text-gray-600">
@@ -64,7 +64,7 @@ export default function Footer() {
             </h3>
 
             <div className="mt-5 space-y-3 text-sm text-gray-600">
-              <p>hello@studynook.com</p>
+              <p>hello@classroom.com</p>
               <p>+880 1234-567890</p>
               <p>Dhaka, Bangladesh</p>
             </div>
@@ -74,7 +74,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-12 flex flex-col gap-6 border-t border-gray-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} StudyNook. All rights reserved.
+            © {new Date().getFullYear()} ClassRoom. All rights reserved.
           </p>
 
           {/* Social Links */}

@@ -22,7 +22,7 @@ export default function ListYourRoom() {
               </h2>
 
               <p className="mt-5 max-w-xl text-base leading-7 text-gray-300">
-                List your available study space on StudyNook and help students
+                List your available study space on ClassRoom and help students
                 find a comfortable place to learn, focus, and collaborate.
               </p>
 

@@ -76,7 +76,7 @@ export default function LoginPage() {
             href="/"
             className="text-2xl font-bold tracking-tight text-black"
           >
-            StudyNook
+            ClassRoom
           </Link>
 
           <h1 className="mt-8 text-3xl font-bold tracking-tight text-black">
@@ -84,7 +84,7 @@ export default function LoginPage() {
           </h1>
 
           <p className="mt-3 text-sm text-gray-600">
-            Sign in to continue to your StudyNook account.
+            Sign in to continue to your ClassRoom account.
           </p>
         </div>
 
