@@ -1,6 +1,7 @@
 # ClassRoom — Flexible Space Rental Platform
 
 **Book the space. Make it happen.**
+![Home Page](./screenshots/home.png)
 
 ClassRoom is a full-stack space rental platform designed to make professional and creative spaces accessible to everyone. It aims to help content creators, educators, students, freelancers, and professionals find and rent suitable spaces according to their needs and preferred duration.
 
