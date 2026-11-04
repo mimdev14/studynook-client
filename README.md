@@ -1,13 +1,15 @@
+> **Project Status:** Demo Project | Existing Booking Platform with an Expanded Product Vision
 # ClassRoom — Flexible Space Rental Platform
 
 **Book the space. Make it happen.**
+
 ![Home Page](./public/screenshot/home.png)
 
 ClassRoom is a full-stack space rental platform designed to make professional and creative spaces accessible to everyone. It aims to help content creators, educators, students, freelancers, and professionals find and rent suitable spaces according to their needs and preferred duration.
 
 Whether someone needs a podcast studio for an hour, a classroom for an online session, an office for a meeting, or a venue for a small seminar, ClassRoom aims to make finding and booking that space simple and flexible.
 
-> **Project Status:** Demo Project | Existing Booking Platform with an Expanded Product Vision
+
 
 **Live Demo:** [StudyNook](https://studynook-client-zeta.vercel.app/)
 
